@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package item.v1;
+
+import "google/type/datetime.proto";
+
+message Item {
+  string item_id = 1;
+  string name = 2;
+  google.type.DateTime created_at = 3;
+}
+
+message GetItemRequest {
+  string item_id = 1;
+}
+
+message GetItemResponse {
+  Item item = 1;
+}
+
+service ItemStoreService {
+  rpc GetItem(GetItemRequest) returns (GetItemResponse) {}
+}
